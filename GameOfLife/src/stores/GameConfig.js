@@ -33,8 +33,7 @@ export const useCounterStore = defineStore('counter', {
         for (let j = 0; j < this.selectedGrid.col; j++){
             tempRow.push(0)
         }
-        
-        this.grid.push(...tempRow)
+        this.grid.push(JSON.parse(JSON.stringify(tempRow)))
       }
     }
   }
