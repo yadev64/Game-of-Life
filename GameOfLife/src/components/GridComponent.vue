@@ -5,6 +5,13 @@
 
     <cellComponent :isAlive="true"></cellComponent>
     <cellComponent :isAlive="false"></cellComponent>
+
+    <div class="row" v-for="rowItem in grid" :key="rowItem">
+      <div v-for="cell in rowItem" :key="cell">
+        <cellComponent :isAlive="cell ? true : false"></cellComponent>
+      </div>
+      {{ rowItem }}
+    </div>
   </q-card>
 </template>
 
