@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import { useRouter } from "vue-router";
 import { ref, defineComponent } from "vue";
 import { useCounterStore } from "../stores/GameConfig";
 
@@ -37,6 +38,8 @@ export default defineComponent({
   name: "IndexPage",
   setup() {
     const gameConfigStore = useCounterStore();
+    const router = useRouter();
+
     let gridOptions = ref([
       {
         id: 1,
@@ -79,8 +82,9 @@ export default defineComponent({
 
     const generateGrid = () => {
       gameConfigStore.generateGrid();
-      // console.log("Generated grid: ", gameConfigStore.grid[5][6]);
+      router.push("/game");
     };
+
     return {
       gridOptions,
       selectedGrid,
