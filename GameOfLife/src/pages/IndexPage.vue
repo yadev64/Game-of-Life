@@ -3,9 +3,9 @@
     <div class="q-pa-md" style="max-width: 600px; width: 100%">
       <q-card class="bg-yellow shadow-10">
         <q-card-section>
-          <q-card-title class="q-pa-sm">
+          <q-card-section class="q-pa-sm">
             <h2 class="text-center q-my-md">Game of Life</h2>
-          </q-card-title>
+          </q-card-section>
         </q-card-section>
       </q-card>
       <q-select
@@ -22,6 +22,7 @@
           label="START GAME!"
           style="width: 300px; height: 50px"
           class="bg-purple-2 text-purple"
+          @click="generateGrid"
         ></q-btn>
       </div>
     </div>
@@ -30,10 +31,12 @@
 
 <script>
 import { ref, defineComponent } from "vue";
+import { useCounterStore } from "../stores/GameConfig";
 
 export default defineComponent({
   name: "IndexPage",
   setup() {
+    const gameConfigStore = useCounterStore();
     let gridOptions = ref([
       {
         id: 1,
@@ -73,9 +76,15 @@ export default defineComponent({
       row: 10,
       col: 10,
     });
+
+    const generateGrid = () => {
+      gameConfigStore.generateGrid();
+      // console.log("Generated grid: ", gameConfigStore.grid[5][6]);
+    };
     return {
       gridOptions,
       selectedGrid,
+      generateGrid,
     };
   },
 });
