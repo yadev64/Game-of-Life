@@ -18,7 +18,7 @@
 <script>
 import { useRouter } from "vue-router";
 import { ref, defineComponent, computed } from "vue";
-import { useCounterStore } from "../stores/GameConfig";
+import { useGameStore } from "../stores/GameConfig";
 import cellComponent from "../components/CellComponent.vue";
 
 export default {
@@ -26,7 +26,7 @@ export default {
     cellComponent,
   },
   setup() {
-    const gameStore = useCounterStore();
+    const gameStore = useGameStore();
     const router = useRouter();
 
     const grid = gameStore.grid;

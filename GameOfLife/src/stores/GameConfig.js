@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useCounterStore = defineStore('counter', {
+export const useGameStore = defineStore('counter', {
   state: () => ({
     counter: 0,
     selectedGrid: {

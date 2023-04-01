@@ -32,12 +32,12 @@
 <script>
 import { useRouter } from "vue-router";
 import { ref, defineComponent } from "vue";
-import { useCounterStore } from "../stores/GameConfig";
+import { useGameStore } from "../stores/GameConfig";
 
 export default defineComponent({
   name: "IndexPage",
   setup() {
-    const gameConfigStore = useCounterStore();
+    const gameConfigStore = useGameStore();
     const router = useRouter();
 
     let gridOptions = ref([
