@@ -6,9 +6,12 @@
     <cellComponent :isAlive="true"></cellComponent>
     <cellComponent :isAlive="false"></cellComponent>
 
-    <div class="row" v-for="rowItem in grid" :key="rowItem">
-      <div v-for="cell in rowItem" :key="cell">
-        <cellComponent :isAlive="cell ? true : false"></cellComponent>
+    <div class="row" v-for="(rowItem, i) in grid" :key="rowItem">
+      <div v-for="(cell, j) in rowItem" :key="cell">
+        <cellComponent
+          :isAlive="cell ? true : false"
+          @click="mutateCell(i, j)"
+        ></cellComponent>
       </div>
       {{ rowItem }}
     </div>
@@ -35,10 +38,15 @@ export default {
       grid[7][1] = 5;
     };
 
+    const mutateCell = (i, j) => {
+      grid[i][j] = 5;
+    };
+
     return {
       grid,
       mutateGrid,
       gameStore,
+      mutateCell,
     };
   },
   name: "GridComponent",
