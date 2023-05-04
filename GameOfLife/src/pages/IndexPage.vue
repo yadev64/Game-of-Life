@@ -81,8 +81,13 @@ export default defineComponent({
     });
 
     const generateGrid = () => {
+      updateSelectedGrid(selectedGrid.value);
       gameConfigStore.generateGrid();
       router.push("/game");
+    };
+
+    const updateSelectedGrid = (grid) => {
+      gameConfigStore.selectedGrid = grid;
     };
 
     return {
