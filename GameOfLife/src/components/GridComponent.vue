@@ -39,7 +39,11 @@ export default {
     };
 
     const mutateCell = (i, j) => {
-      grid[i][j] = 5;
+      if (grid[i][j] == 5) {
+        grid[i][j] = 0;
+      } else {
+        grid[i][j] = 5;
+      }
     };
 
     return {
