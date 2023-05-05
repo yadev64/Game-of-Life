@@ -24,10 +24,26 @@ export default {
     const gameStore = useGameStore();
     const router = useRouter();
 
-    const grid = gameStore.grid;
+    let grid = gameStore.grid;
+    let grid2 = gameStore.grid2;
 
-    const mutateGrid = () => {
-      grid[7][1] = 5;
+    const liveNeighbourCount = (i, j) => {
+      neighbourCount = 0;
+
+      let is = i - 1 >= 0 ? i - 1 : i;
+      let ie = i + 1 < grid.length ? i + 1 : i;
+      let js = j - 1 >= 0 ? j - 1 : j;
+      let je = j + 1 < grid.length ? j + 1 : j;
+
+      for (let inew = is; inew <= ie; inew++) {
+        for (let jnew = js; jnew <= je; jnew++) {
+          if (grid[inew][jnew] != 0) {
+            neighbourCount += 1;
+          }
+        }
+      }
+
+      return neighbourCount;
     };
 
     return {
