@@ -35,7 +35,26 @@ export default {
     const grid = gameStore.grid;
 
     const mutateGrid = () => {
-      grid[7][1] = 5;
+      let liveCount = 1;
+
+      while (liveCount > 0) {
+        setTimeout(() => {
+          for (let i = 0; i < grid[0].length; i++) {
+            for (let j = 0; j < grid.length; j++) {
+              if (liveNeighbourCount(i, j) == 3 && grid[i][j] == 0) {
+                // bring back to life
+              } else if (liveNeighbourCount(i, j) in [2, 3]) {
+                // Keep cell
+              } else if (liveNeighbourCount(i, j) > 3) {
+                // Keep cell
+              } else if (liveNeighbourCount(i, j) < 2) {
+                // Kill cell
+              }
+            }
+          }
+        }, 100);
+      }
+      // grid[7][1] = 5;
     };
 
     const mutateCell = (i, j) => {
