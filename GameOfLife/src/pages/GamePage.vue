@@ -27,6 +27,37 @@ export default {
     let grid = gameStore.grid;
     let grid2 = gameStore.grid2;
 
+    const mutateGrid = () => {
+      grid2 = JSON.parse(JSON.stringify(grid));
+
+      let liveCount = 1;
+
+      while (liveCount > 0) {
+        setTimeout(() => {
+          for (let i = 0; i < grid[0].length; i++) {
+            for (let j = 0; j < grid.length; j++) {
+              if (liveNeighbourCount(i, j) == 3 && grid[i][j] == 0) {
+                // bring back to life
+                grid2[i][j] = 5;
+              } else if (liveNeighbourCount(i, j) in [2, 3]) {
+                // Keep cell
+                grid2[i][j] = grid[i][j];
+              } else if (liveNeighbourCount(i, j) > 3) {
+                // Kill cell
+                grid2[i][j] = 0;
+              } else if (liveNeighbourCount(i, j) < 2) {
+                // Kill cell
+                grid2[i][j] = 0;
+              }
+            }
+          }
+
+          grid = JSON.parse(JSON.stringify(grid2));
+        }, 1000);
+      }
+      // grid[7][1] = 5;
+    };
+
     const liveNeighbourCount = (i, j) => {
       neighbourCount = 0;
 
