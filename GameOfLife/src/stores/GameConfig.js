@@ -9,7 +9,8 @@ export const useGameStore = defineStore('counter', {
         row: 10,
         col: 10,
     },
-    grid:[]
+    grid: [],
+    grid2:[]
   }),
 
   getters: {
@@ -26,6 +27,7 @@ export const useGameStore = defineStore('counter', {
     // Generate Grid based on given Grid size
     generateGrid() {
       this.grid = []
+      this.grid2 = []
       for (let i = 0; i < this.selectedGrid.row; i++) { 
 
         let tempRow = []
@@ -34,6 +36,7 @@ export const useGameStore = defineStore('counter', {
             tempRow.push(0)
         }
         this.grid.push(JSON.parse(JSON.stringify(tempRow)))
+        this.grid2.push(JSON.parse(JSON.stringify(tempRow)))
       }
     }
   }
