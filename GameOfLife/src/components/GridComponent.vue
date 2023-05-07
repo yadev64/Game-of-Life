@@ -6,8 +6,8 @@
     <cellComponent :isAlive="true"></cellComponent>
     <cellComponent :isAlive="false"></cellComponent>
 
-    <div class="row" v-for="(rowItem, i) in grid" :key="rowItem">
-      <div v-for="(cell, j) in rowItem" :key="cell">
+    <div class="row" v-for="(rowItem, i) in grid" :key="i">
+      <div v-for="(cell, j) in rowItem" :key="j">
         <cellComponent
           :isAlive="cell ? true : false"
           @click="mutateCell(i, j)"
