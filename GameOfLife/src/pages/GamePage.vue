@@ -91,7 +91,7 @@ export default {
       }
 
       // console.log("NBC: ", neighbourCount, i, j);
-      return neighbourCount;
+      return neighbourCount - 1;
     };
 
     const copyGrid = (mode) => {
