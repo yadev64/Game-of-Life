@@ -14,7 +14,13 @@ export default {
     },
   },
   setup(props) {
-    return {};
+    let cellSize = ref({
+      height: 50,
+      width: 50,
+    });
+    return {
+      cellSize,
+    };
   },
 };
 </script>
